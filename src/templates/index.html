@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    </style>
+
+<!-- Thanks! https://stackoverflow.com/a/469419 -->
+<script type="text/javascript">
+    function validate(evt) {
+    var theEvent = evt || window.event;
+
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /[0-9]|\./;
+    if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+    }
+</script>    
+
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <p>First, decide whether you want to create a <strong>new connection</strong> or pair a device with an <strong>existing connection</strong>.</p>
+
+
+        <h2>Connect to existing code</h2>
+
+        <form action="view" method="POST">
+            <h6 style="margin-bottom: 1rem;">Enter the code of the device you want to connect to.</h6>
+            <p><strong>Code of other device </strong></p>
+            <input style="width: 4rem;" type="number" name="code" id="code" onkeypress="validate(event)" maxlength="4" name="name" placeholder="1234" class="text_input"/>
+            <br>
+            <button type="submit">Connect to device</button>
+        </form>
+
+        <br>
+    
+        <h2>Creating new code</h2>
+
+        <form action="new" method="POST">
+            <h6 style="margin-bottom: 1rem;">This message will be displayed when a new device is connected.</h6>
+            <p><strong>Your message </strong></p>
+            <input type="text" name="message" id="message" maxlength="1024" placeholder="Hello there!" class="text_input"/>
+            <br>
+            <button type="submit">Create new connection</button>
+        </form>
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>

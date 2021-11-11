@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <h2>Pairing Code</h2>
+        <p>Great! A new pairing code has been created.</p>
+
+        <h3>Your Code:</h3>
+        <h2 style="color: #b454f3;">{{ code }}</h2>
+
+        <h3>Message:</h3>
+        <h5>{{ message }}</h5>
+        <img class="dark-invert" src="{{ url_for('static', filename=image) }}">
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>

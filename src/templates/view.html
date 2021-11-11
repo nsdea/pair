@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <h2>Paired</h2>
+        <p>Awesome! You just connected using code <code>{{ code }}</code>.</p>
+
+        <h3>Message:</h3>
+        <h5>{{ message }}</h5>        
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>
